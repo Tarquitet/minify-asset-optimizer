@@ -1,53 +1,42 @@
 # ⚡ Asset Optimizer (CSS / JS Minifier)
 
-> **Un script de automatización en Python que escanea tu proyecto, corrige errores comunes de sintaxis y genera versiones ultra-comprimidas de tus recursos web.**
+> **An automation script that scans your project, fixes common syntax issues and generates highly compressed `.min.css` and `.min.js` files.**
 
-**Asset Optimizer** es una herramienta de terminal que recorre el árbol de directorios de tu proyecto para localizar archivos `.css` y `.js` sin minificar. A diferencia de las extensiones estándar, este script procesa y repara errores de formato (saltos de línea y espacios en blanco) que suelen causar fallos en minificadores populares como Terser o las extensiones de VSCode, generando archivos `.min.css` y `.min.js` altamente optimizados.
+Asset Optimizer is a terminal tool that walks your project tree to find non-minified `.css` and `.js` files. It repairs common formatting issues that break some minifiers and produces `.min.*` files alongside originals.
 
-## ✨ Características Principales
+## ✨ Features
 
-- **🛠️ Corrección y Compatibilidad Superior:** Arregla de forma nativa los errores provocados por saltos de línea y espacios problemáticos que hacen fallar a otras herramientas (como Terser.org o VSCode Minify).
-- **🤖 Auto-Instalador Inteligente:** Si el usuario no tiene las dependencias necesarias (`csscompressor`, `jsmin`), el script las instala automáticamente y se reinicia solo para continuar el proceso sin interrupciones.
-- **📊 Analítica de Compresión:** Calcula y muestra en la terminal la reducción exacta de tamaño (en peso y porcentaje) lograda por cada archivo procesado.
-- **🛡️ Búsqueda Inteligente (Smart Exclusion):** Recorre el proyecto recursivamente pero ignora carpetas de desarrollo o versiones antiguas configuradas por el usuario.
-
----
-
-## ⚙️ Requisitos e Instalación
-
-**Requisitos del sistema:**
-
-- Python 3.8 o superior.
-
-**Dependencias (gestionadas automáticamente):**
-
-- `csscompressor`
-- `jsmin`
-  _(Nota: No necesitas instalar nada manualmente. El script detectará si faltan estos paquetes, los instalará vía `pip` y reiniciará el intérprete para cargarlos)._
+- **Syntax Repair & Compatibility:** Fixes problematic line breaks and whitespace that cause other minifiers to fail.
+- **Auto-Installer:** Installs dependencies (`csscompressor`, `jsmin`) automatically and restarts.
+- **Compression Analytics:** Reports size reduction (bytes and percent) per file.
+- **Smart Exclusion:** Recursively scans but ignores configured dev or legacy folders.
 
 ---
 
-## 📖 Guía de Uso
+## ⚙️ Requirements
 
-El uso es directo mediante la terminal desde la raíz de tu proyecto.
+- Python 3.8 or newer.
 
-1. **Configuración (Opcional):**
-   Abre el archivo `minify_assets.py` y ajusta la variable `EXCLUDE_DIRS` si necesitas omitir carpetas específicas (por defecto excluye: `dev`, `node_modules`, `ver1`, `ver2.5_fail`).
-2. **Ejecutar el optimizador:**
+Dependencies are managed automatically: `csscompressor`, `jsmin`.
 
-   ```bash
-   python dev/scripts/asset-optimizer/
-   minify-asset-optimizer.py
+Run the optimizer from project root; adjust `EXCLUDE_DIRS` in `minify_assets.py` if needed.
 
-    Resultado: El script sobrescribirá (o creará) los archivos .min.* junto a los originales y te mostrará el reporte de ahorro de espacio.
-   ```
+## Usage
 
-📈 Evolución del Proyecto (Changelog)
+1. (Optional) Edit `minify_assets.py` and set `EXCLUDE_DIRS` if you need to ignore folders (defaults may include `dev`, `node_modules`, `ver1`, `ver2.5_fail`).
+2. Run the optimizer from the project root:
 
-v1.0: Implementación inicial con soporte base para CSS y JS.
+```bash
+python dev/scripts/asset-optimizer/minify-asset-optimizer.py
+```
 
-v1.1: Mejora en el sistema de exclusión de carpetas (EXCLUDE_DIRS) y manejo de errores por archivo.
+The script will create or overwrite `.min.*` files next to the originals and print a compression report.
 
-v1.2: Incorporación del cálculo de reducción de tamaño y reportes visuales en terminal.
+[![Leer en Español](https://img.shields.io/badge/Leer%20en%20Espa%C3%B1ol-ES-blue?style=flat-square&logo=github)](README_es.md)
 
-v2.0 (Actual): Adición del auto-instalador de dependencias con reinicio automático y parches para la corrección de errores de sintaxis/espaciado.
+## Changelog
+
+- v1.0: Initial implementation with basic CSS/JS support.
+- v1.1: Improved exclusion logic (`EXCLUDE_DIRS`) and per-file error handling.
+- v1.2: Added compression analytics and terminal reports.
+- v2.0: Auto-installer for dependencies and fixes for formatting edge-cases.
